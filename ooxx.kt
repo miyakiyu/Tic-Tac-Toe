@@ -14,7 +14,10 @@ fun main()
         arrayListOf("-","-","-")
     )
 
-    while(true)
+    //create a check if game ended
+    var game_end_check = true
+
+    while(game_end_check)
     {
         var chooser:Int = 0 
 
@@ -34,6 +37,7 @@ fun main()
                 println(map[i].toString())
             }
             chooser+=1
+            println(check_if_win(map))
         }
 
         //######################## I'M SPLIT LINE ########################//
@@ -54,13 +58,38 @@ fun main()
                 println(map[i].toString())
             }
             chooser+=1
+
+            //let the game end
+            if(chooser == 8)
+            {
+                game_end_check = false
+            }   
+            println(check_if_win(map))
         }
+
+        
     }  
 }
 
+fun check_if_win(map:ArrayList<ArrayList<String>>):String
+{   
+    //check row and column
+    for(i in 0..2)
+    {
+        if(map[i][0] == map[i][1] && map[i][1] == map[i][2] && map[i][0] != "-") 
+        {
+            return "YOU WIN!"
+        }
+        else if(map[0][i] == map[1][i] && map[1][i] == map[2][i] && map[0][i] != "-")
+        {
+            return "YOU WIN!"
+        }
+        else break
+    }
 
-fun check_if_win()
-{
     
+    //check 
+
+    return " "
 }
 
