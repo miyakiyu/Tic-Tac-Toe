@@ -71,6 +71,7 @@ fun main()
             //check win 
             if(check_if_win(map)==true)
             {
+                game_end_check = false
                 println("X WIN!!! (b･X ･)b")
             }
             else if(check_draw(map)==true)
@@ -95,23 +96,19 @@ fun check_if_win(map:ArrayList<ArrayList<String>>):Boolean
         {
             return true
         }
-        else break
+        else continue
     }
 
-    //check column
-    for(i in 0..2)
+    //check cross
+    if(map[0][0] == map[1][1] && map[1][1] == map[2][2] && map[0][0] != "-")
     {
-        if(map[0][0] == map[1][1] && map[1][1] == map[2][2] && map[0][0] != "-")
-        {
-            return true
-        }
-        else if(map[2][0] == map[1][1] && map[1][1] == map[0][2] && map[2][0] != "-")
-        {
-            return true
-        }
-        else break
+        return true
     }
-    return false
+    else if(map[2][0] == map[1][1] && map[1][1] == map[0][2] && map[2][0] != "-")
+    {
+        return true
+    }
+    else return false
 }
 
 fun check_draw(map:ArrayList<ArrayList<String>>):Boolean
